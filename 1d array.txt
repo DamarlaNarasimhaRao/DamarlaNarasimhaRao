@@ -1,0 +1,30 @@
+#include <stdio.h>
+void rotateArray(int arr[], int size, int shift, int direction) {
+    shift = shift % size; 
+    for (int i = 0; i < size; i++) {
+        int newIndex;
+        if (direction == 0) {
+            newIndex = (i + shift) % size; 
+        } else {
+            newIndex = (i + size - shift) % size; 
+        }
+        printf("%d ", arr[newIndex]);
+    }
+}
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int shift = 2;
+    printf("Original Array: ");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    printf("Array rotated from right to left by %d positions: ", shift);
+    rotateArray(arr, size, shift, 0); // Rotate right to left
+    printf("\n");
+    printf("Array rotated from left to right by %d positions: ", shift);
+    rotateArray(arr, size, shift, 1); // Rotate left to right
+    printf("\n");
+    return 0;
+}
